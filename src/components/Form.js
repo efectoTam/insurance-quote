@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { getYearDifference } from '../helper';
+import { getYearDifference, calculateBrand } from '../helper';
 
 const Field = styled.div`
   display: flex;
@@ -93,6 +93,9 @@ const Form = () => {
     // American 15%
     // Asian 5%
     // European 30%
+    result = calculateBrand(brand) * result;
+
+    console.log(result);
     
     // Basic rise 20%
     // Complete rise 50%
@@ -116,9 +119,9 @@ const Form = () => {
           onChange={getInformation}
         >
           <option value="">-- Seleccione --</option>
-          <option value="americano">Americano</option>
-          <option value="europeo">Europeo</option>
-          <option value="asiatico">Asiático</option>
+          <option value="american">Americano</option>
+          <option value="european">Europeo</option>
+          <option value="asian">Asiático</option>
         </Select>
       </Field>
       <Field>
