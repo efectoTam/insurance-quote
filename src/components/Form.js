@@ -41,6 +41,14 @@ const Button = styled.button`
   }
 `;
 
+const Error = styled.div`
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
 const Form = () => {
 
   const [ data, saveData ] = useState({
@@ -49,10 +57,12 @@ const Form = () => {
     plan: ''
   });
 
+  const [error, saveError] = useState(false);
+
   // extract state values
   const { brand, year, plan } = data;
 
-  //read form info and put on the state
+  // read form info and put on the state
   const getInformation = e => {
     saveData({
       ...data,
@@ -60,8 +70,38 @@ const Form = () => {
     })
   }
 
+  // when the user press submit
+  const quoteInsurance = e => {
+    e.preventDefault();
+    if(brand.trim() === '' || year.trim() === '' || plan.trim() === '') {
+      saveError(true);
+      return;
+    }
+
+    saveError(false);
+
+    // Years diference
+
+    // For every year we should subtract 3%
+
+    // American 15%
+    // Asian 5%
+    // European 30%
+
+    // Basic rise 20%
+    // Complete rise 50%
+
+    // Total
+  }
+
   return (
-    <form>
+    <form
+      onSubmit={quoteInsurance}
+    >
+      {error
+        ? <Error>Todos los campos son obligatorios</Error>
+        : null
+      }
       <Field>
         <Label>Marca</Label>
         <Select
@@ -112,7 +152,7 @@ const Form = () => {
           onChange={getInformation}
         /> Completo
       </Field>
-      <Button type="button">Cotizar</Button>
+      <Button type="submit">Cotizar</Button>
     </form>
   );
 }
