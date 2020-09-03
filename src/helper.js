@@ -21,3 +21,8 @@ export function calculateBrand(brand) {
   }
   return increase;
 }
+
+// Calculate the insurance type
+export function getPlan(plan) {
+  return(plan === 'basic') ? 1.20 : 1.50;
+}

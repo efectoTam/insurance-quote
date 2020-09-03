@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { getYearDifference, calculateBrand } from '../helper';
+import { getYearDifference, calculateBrand, getPlan } from '../helper';
 
 const Field = styled.div`
   display: flex;
@@ -94,11 +94,12 @@ const Form = () => {
     // Asian 5%
     // European 30%
     result = calculateBrand(brand) * result;
-
-    console.log(result);
     
     // Basic rise 20%
     // Complete rise 50%
+    const planIncrease = getPlan(plan);
+    result = parseFloat(planIncrease * result).toFixed(2);
+    console.log(result);
 
     // Total
   }
@@ -149,15 +150,15 @@ const Form = () => {
         <InputRadio
           type="radio"
           name="plan"
-          value="basico"
-          checked={plan === "basico"}
+          value="basic"
+          checked={plan === "basic"}
           onChange={getInformation}
         /> Básico
         <InputRadio
           type="radio"
           name="plan"
-          value="completo"
-          checked={plan === "completo"}
+          value="complete"
+          checked={plan === "complete"}
           onChange={getInformation}
         /> Completo
       </Field>
