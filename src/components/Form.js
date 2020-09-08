@@ -50,7 +50,7 @@ const Error = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Form = () => {
+const Form = ({saveSummary}) => {
 
   const [ data, saveData ] = useState({
     brand: '',
@@ -102,6 +102,10 @@ const Form = () => {
     console.log(result);
 
     // Total
+    saveSummary({
+      estimate: result,
+      data
+    })
   }
 
   return (
