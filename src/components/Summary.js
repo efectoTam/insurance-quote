@@ -1,4 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import styled from '@emotion/styled';
+import { uppercaseFirst } from '../helper'
+
+const SummaryContainer = styled.div `
+  padding: 1rem;
+  text-align: center;
+  background-color: #00838F;
+  color: #FFF;
+  margin-top: 1rem;
+`;
 
 const Summary = ({data}) => {
   //Extracting from data
@@ -7,14 +17,14 @@ const Summary = ({data}) => {
   if(brand === '' || year === '' || plan === '') return null;
 
   return (
-    <Fragment>
+    <SummaryContainer>
       <h2>Resumen de cotización</h2>
       <ul>
-        <li>Marca:</li>
-        <li>Plan:</li>
-        <li>Año:</li>
+        <li>Marca: { uppercaseFirst(brand) }</li>
+        <li>Plan: { uppercaseFirst(plan) }</li>
+        <li>Año: {year}</li>
       </ul>
-    </Fragment>
+    </SummaryContainer>
   );
 }
  

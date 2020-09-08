@@ -124,9 +124,9 @@ const Form = ({saveSummary}) => {
           onChange={getInformation}
         >
           <option value="">-- Seleccione --</option>
-          <option value="american">Americano</option>
-          <option value="european">Europeo</option>
-          <option value="asian">Asiático</option>
+          <option value="americano">Americano</option>
+          <option value="europeo">Europeo</option>
+          <option value="asiatico">Asiático</option>
         </Select>
       </Field>
       <Field>
@@ -154,15 +154,15 @@ const Form = ({saveSummary}) => {
         <InputRadio
           type="radio"
           name="plan"
-          value="basic"
-          checked={plan === "basic"}
+          value="basico"
+          checked={plan === "basico"}
           onChange={getInformation}
         /> Básico
         <InputRadio
           type="radio"
           name="plan"
-          value="complete"
-          checked={plan === "complete"}
+          value="completo"
+          checked={plan === "completo"}
           onChange={getInformation}
         /> Completo
       </Field>

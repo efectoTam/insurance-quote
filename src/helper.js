@@ -7,13 +7,13 @@ export function getYearDifference(year) {
 export function calculateBrand(brand) {
   let increase;
   switch(brand) {
-    case 'european':
+    case 'europeo':
       increase = 1.30;
       break;
-    case 'american':
+    case 'americano':
       increase = 1.15;
       break;
-    case 'asian':
+    case 'asiatico':
       increase = 1.05;
       break;
     default:
@@ -24,5 +24,10 @@ export function calculateBrand(brand) {
 
 // Calculate the insurance type
 export function getPlan(plan) {
-  return(plan === 'basic') ? 1.20 : 1.50;
+  return(plan === 'basico') ? 1.20 : 1.50;
+}
+
+// Show first caracter as uppercase
+export function uppercaseFirst(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
