@@ -50,7 +50,7 @@ const Error = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Form = ({saveSummary}) => {
+const Form = ({ saveSummary, loadingSave }) => {
 
   const [ data, saveData ] = useState({
     brand: '',
@@ -99,13 +99,18 @@ const Form = ({saveSummary}) => {
     // Complete rise 50%
     const planIncrease = getPlan(plan);
     result = parseFloat(planIncrease * result).toFixed(2);
-    console.log(result);
 
-    // Total
-    saveSummary({
-      estimate: result,
-      data
-    })
+    loadingSave(true);
+
+    setTimeout(() => {
+      // Removing spinner
+      loadingSave(false);
+      // Total
+      saveSummary({
+        estimate: result,
+        data
+      })
+    }, 3000);
   }
 
   return (

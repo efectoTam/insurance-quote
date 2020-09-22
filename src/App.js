@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Form from './components/Form';
 import Summary from './components/Summary';
 import Result from './components/Result';
+import Spinner from './components/Spinner';
 import styled from '@emotion/styled';
 
 const Container = styled.div `
@@ -25,6 +26,8 @@ function App() {
     }
   });
 
+  const [ loading, loadingSave] = useState(false);
+
   // Extract data
   const { estimate, data } = summary;
 
@@ -36,13 +39,19 @@ function App() {
       <FormContainer>
         <Form
           saveSummary={saveSummary}
+          loadingSave={loadingSave}
         />
+        {loading 
+          ? <Spinner />
+          : null
+        }
         <Summary
           data={data}
         />
-        <Result
-          estimate={estimate}  
-        />
+        {!loading
+        ? <Result estimate={estimate} />
+        : null
+        }
       </FormContainer>
     </Container>
   );
