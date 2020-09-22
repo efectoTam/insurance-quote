@@ -49,8 +49,8 @@ function App() {
           data={data}
         />
         {!loading
-        ? <Result estimate={estimate} />
-        : null
+          ? <Result estimate={estimate} />
+          : null
         }
       </FormContainer>
     </Container>
