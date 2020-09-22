@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import PropTypes from 'prop-types';
 
 const Message = styled.p `
   background-color: rgb(127, 224, 237);
@@ -33,7 +34,7 @@ const Result = ({ estimate }) => {
     : (
       <EstimateResult>
         <TransitionGroup
-          component="p"
+          component="span"
           className="resultado"
         >
           <CSSTransition
@@ -41,12 +42,16 @@ const Result = ({ estimate }) => {
             key={ estimate }
             timeout={{ enter: 500, exit: 500}}
           >
-            <EstimateText>El total es $ { estimate }</EstimateText>
+            <EstimateText>El total es $ <span>{ estimate }</span></EstimateText>
           </CSSTransition>
         </TransitionGroup>
       </EstimateResult>
     )
   )
+}
+
+Result.propTypes = {
+  estimate: PropTypes.number.isRequired
 }
  
 export default Result;
